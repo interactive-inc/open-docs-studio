@@ -68,5 +68,10 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "homepage": "https://interactive-inc.github.io/open-docs-client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interactive-inc/open-docs-studio.git"
   }
 }
