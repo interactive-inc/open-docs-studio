@@ -1,0 +1,19 @@
+import type { DocRelationFile } from "@interactive-inc/docs-client"
+import { MultiRelationSelect } from "@/components/file-view/multi-relation-select"
+
+type Props = {
+  value: unknown
+  onUpdate: (value: unknown) => void
+  relationOptions?: DocRelationFile[]
+}
+
+export function MultiRelationEditableCell(props: Props) {
+  // MultiRelationSelectはDocRelationFileを直接受け取る
+  return (
+    <MultiRelationSelect
+      value={Array.isArray(props.value) ? props.value : []}
+      relationOptions={props.relationOptions}
+      onValueChange={(value) => props.onUpdate(value)}
+    />
+  )
+}
