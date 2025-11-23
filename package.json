@@ -1,18 +1,16 @@
 {
-  "name": "open-studio",
-  "version": "1.2.0",
-  "private": true,
+  "name": "@interactive-inc/docs",
+  "version": "1.2.2",
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "start": "bun cli.ts",
+    "start": "bun cli.ts --dev",
     "build": "next build",
     "build:cli": "tsup",
     "test": "bun test",
     "check": "tsgo",
     "format": "biome check . --fix --unsafe",
-    "deploy": "wrangler deploy",
-    "prepublishOnly": "bun run build && bun run build:cli"
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -67,5 +65,8 @@
     "build/",
     "bin/",
     ".next/"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

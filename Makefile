@@ -10,24 +10,13 @@ clean:
 	rm -rf node_modules/.cache
 
 # Start development server
-dev:
-	bun run dev
-
-# Start production server
-start:
-	bun run start
-
-# Run tests
-test:
-	bun run test
-
-# Type check
-check:
-	bun run check
-
-# Format code
-format:
-	bun run format
+deploy:
+	bun biome check . --fix --unsafe
+	bun test
+	bun check
+	bun run build
+	bun run build:cli
+	bun publish
 
 # Update packages
 update-packages:
