@@ -2,7 +2,7 @@
   "permissions": {
     "defaultMode": "bypassPermissions",
     "deny": [
-      "Bash(bun run dev)",
+      "Bash(vp dev)",
       "Edit(src/components/theme-provider.tsx)",
       "Edit(src/components/ui/*)",
       "Edit(src/hooks/use-mobile.ts)",

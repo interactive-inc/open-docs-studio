@@ -11,20 +11,15 @@ clean:
 
 # Start development server
 deploy:
-	vp fmt --write
+	vp fmt
 	vp lint
 	vp test
 	vp run check
 	vp run build
 	vp run build:cli
-	bun publish
+	vp pm publish
 
 # Update packages
 update-packages:
-	bunx --bun shadcn@latest add -a -o -y
-	bunx --bun shadcn@latest migrate radix -y
-	bunx npm-check-updates -u
+	vp update
 	vp install
-	rm components/ui/chart.tsx
-	vp fmt --write
-	vp lint --fix
