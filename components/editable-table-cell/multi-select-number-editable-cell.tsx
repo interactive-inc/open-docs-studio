@@ -33,11 +33,7 @@ export function MultiSelectNumberEditableCell(props: Props) {
     <div className="relative">
       <div className="flex min-h-8 flex-wrap gap-1 rounded-md border p-2">
         {currentValues.map((value) => (
-          <Badge
-            key={value}
-            variant="secondary"
-            className="flex items-center gap-1"
-          >
+          <Badge key={value} variant="secondary" className="flex items-center gap-1">
             {value}
             <Button
               size="sm"

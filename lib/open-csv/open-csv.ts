@@ -135,9 +135,7 @@ export class OpenCsv {
       const valueA = a[columnIndex] || ""
       const valueB = b[columnIndex] || ""
 
-      return ascending
-        ? valueA.localeCompare(valueB)
-        : valueB.localeCompare(valueA)
+      return ascending ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA)
     })
 
     const newData: CsvData = [header, ...sortedRecords]
@@ -181,10 +179,7 @@ export class OpenCsv {
       return this
     }
 
-    const newData = [
-      ...this.data.slice(0, index),
-      ...this.data.slice(index + 1),
-    ]
+    const newData = [...this.data.slice(0, index), ...this.data.slice(index + 1)]
 
     const newCsv = new OpenCsv("")
     return this.createNewInstance(newCsv, newData)
@@ -248,10 +243,7 @@ export class OpenCsv {
    * CSVデータを検証する
    */
   private validate(): void {
-    if (
-      this.data.length === 0 ||
-      (this.data.length === 1 && this.data[0]?.length === 0)
-    ) {
+    if (this.data.length === 0 || (this.data.length === 1 && this.data[0]?.length === 0)) {
       this.errors.push("CSVデータが空です")
     }
   }

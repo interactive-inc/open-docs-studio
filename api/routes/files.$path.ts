@@ -162,10 +162,7 @@ export const PUT = factory.createHandlers(
         const pathSystem = c.var.client.pathSystem
         const fileName = pathSystem.basename(filePath, ".md")
         const defaultTitle = fileName === "index" ? "概要" : fileName
-        updatedContent = updatedContent.withDescription(
-          body.description,
-          defaultTitle,
-        )
+        updatedContent = updatedContent.withDescription(body.description, defaultTitle)
       }
 
       // コンテンツを更新
@@ -193,10 +190,7 @@ export const PUT = factory.createHandlers(
       const pathSystem = c.var.client.pathSystem
       const fileName = pathSystem.basename(filePath, ".md")
       const defaultTitle = fileName === "index" ? "概要" : fileName
-      updatedContent = updatedContent.withDescription(
-        body.description,
-        defaultTitle,
-      )
+      updatedContent = updatedContent.withDescription(body.description, defaultTitle)
     }
 
     // コンテンツを更新

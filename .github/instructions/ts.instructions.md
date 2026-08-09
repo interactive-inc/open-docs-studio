@@ -66,7 +66,7 @@ const foo = {} as any // Do NOT use any type
 ### SOLID Principles
 
 - Single Responsibility Principle
-- Open-Closed Principle  
+- Open-Closed Principle
 - Dependency Inversion Principle
 
 ### Functional Programming
@@ -145,11 +145,11 @@ export class ClassName {
 ```ts
 export class Document {
   constructor(private readonly data: Data) {}
-  
+
   withTitle(title: string): Document {
     return new Document({ ...this.data, title })
   }
-  
+
   toMarkdown(): string {
     return this.format()
   }
@@ -172,7 +172,7 @@ export class DocumentService {
   constructor(
     private readonly fileSystem: FileSystem,
     private readonly parser: Parser,
-    private readonly validator: Validator
+    private readonly validator: Validator,
   ) {}
 
   async process(path: string): Promise<Document> {

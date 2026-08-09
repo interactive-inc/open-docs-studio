@@ -8,21 +8,11 @@ import {
   useSensors,
 } from "@dnd-kit/core"
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers"
-import {
-  arrayMove,
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable"
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { useState } from "react"
 import { SortableCsvRow } from "@/components/file-view/sortable-csv-row"
 import { Card } from "@/components/ui/card"
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { OpenCsv } from "@/lib/open-csv/open-csv"
 
 type Props = {
@@ -67,11 +57,7 @@ export function FileCsvTable(props: Props) {
       const activeRowIndex = Number.parseInt(activeIndex, 10) + 1 // +1 for header row
       const overRowIndex = Number.parseInt(overIndex, 10) + 1
 
-      const newRecords = arrayMove(
-        csvData.records,
-        activeRowIndex - 1,
-        overRowIndex - 1,
-      )
+      const newRecords = arrayMove(csvData.records, activeRowIndex - 1, overRowIndex - 1)
 
       // Create a new CSV string to initialize a new OpenCsv instance
       const headers = csvData.headers
@@ -87,11 +73,7 @@ export function FileCsvTable(props: Props) {
   } // Create unique and stable ids for each row
   const rowIds = csvData.records.map((_, idx) => `row-${idx}`)
 
-  function handleCellUpdate(
-    rowIndex: number,
-    columnIndex: number,
-    value: string,
-  ) {
+  function handleCellUpdate(rowIndex: number, columnIndex: number, value: string) {
     const newCsvData = csvData.updateCell(rowIndex + 1, columnIndex, value) // +1 for header row
     const newCsvString = newCsvData.toString()
     setCsvData(newCsvData)
@@ -117,10 +99,7 @@ export function FileCsvTable(props: Props) {
           modifiers={[restrictToVerticalAxis]}
         >
           <TableBody>
-            <SortableContext
-              items={rowIds}
-              strategy={verticalListSortingStrategy}
-            >
+            <SortableContext items={rowIds} strategy={verticalListSortingStrategy}>
               {csvData.records.map((row: string[], rowIndex: number) => {
                 const rowId = `row-${rowIndex}`
                 return (

@@ -28,10 +28,7 @@ export function RenderFrontMatterValue(props: Props) {
     return (
       <div>
         {value.map((item, index) => (
-          <div
-            key={`item-${index}-${String(item).substring(0, 8)}`}
-            className="flex"
-          >
+          <div key={`item-${index}-${String(item).substring(0, 8)}`} className="flex">
             <span className="mr-2">-</span>
             <RenderFrontMatterValue value={item} />
           </div>

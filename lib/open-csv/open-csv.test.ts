@@ -1,4 +1,4 @@
-import { expect, test } from "bun:test"
+import { expect, test } from "vite-plus/test"
 import { OpenCsv } from "@/lib/open-csv/open-csv"
 
 test("空のCSVを作成すると検証エラーになること", () => {

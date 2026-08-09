@@ -34,7 +34,7 @@ export function FileHeader(props: Props) {
   const [title, setTitle] = useState(getInitialTitle())
 
   // propsが変更されたときにタイトルを更新
-  // biome-ignore lint/correctness/useExhaustiveDependencies: getInitialTitle depends on props
+  // getInitialTitle depends on props
   useEffect(() => {
     setTitle(getInitialTitle())
   }, [props.fileData.title, props.filePath])
@@ -86,11 +86,7 @@ export function FileHeader(props: Props) {
   return (
     <div className="flex items-center gap-2">
       <SidebarButton />
-      <VscodeButton
-        filePath={props.fileData.path}
-        size="icon"
-        variant="outline"
-      />
+      <VscodeButton filePath={props.fileData.path} size="icon" variant="outline" />
       <Button onClick={handleBackClick} size="icon" variant="outline">
         <ArrowLeft className="h-4 w-4" />
       </Button>

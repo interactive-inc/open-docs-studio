@@ -12,9 +12,7 @@ type Props = {
 }
 
 export function FileCsvColumns(props: Props) {
-  const [csvInstance, setCsvInstance] = useState<OpenCsv>(
-    new OpenCsv(props.content),
-  )
+  const [csvInstance, setCsvInstance] = useState<OpenCsv>(new OpenCsv(props.content))
 
   const [editingHeader, setEditingHeader] = useState<{
     index: number
@@ -36,10 +34,7 @@ export function FileCsvColumns(props: Props) {
   // カラム名の編集を確定
   const confirmHeaderEdit = () => {
     if (editingHeader && editingHeader.value.trim() !== "") {
-      const newCsvInstance = csvInstance.renameColumn(
-        editingHeader.index,
-        editingHeader.value,
-      )
+      const newCsvInstance = csvInstance.renameColumn(editingHeader.index, editingHeader.value)
       updateCsvAndNotify(newCsvInstance)
       setEditingHeader(null)
     }
@@ -98,11 +93,7 @@ export function FileCsvColumns(props: Props) {
             placeholder="新しいカラム名"
             value={newColumnName}
           />
-          <Button
-            disabled={newColumnName.trim() === ""}
-            size="sm"
-            type="submit"
-          >
+          <Button disabled={newColumnName.trim() === ""} size="sm" type="submit">
             <Plus className="mr-1 h-4 w-4" />
             {"追加"}
           </Button>
@@ -110,10 +101,7 @@ export function FileCsvColumns(props: Props) {
       </div>
       <div className="flex flex-col gap-2 p-2">
         {csvInstance.headers.map((header, headerIndex) => (
-          <Card
-            className={"relative gap-0 p-2"}
-            key={`column-${header}-${headerIndex.toFixed()}`}
-          >
+          <Card className={"relative gap-0 p-2"} key={`column-${header}-${headerIndex.toFixed()}`}>
             <div className="flex items-center space-x-2">
               <Input
                 autoFocus={editingHeader?.index === headerIndex}
@@ -126,19 +114,10 @@ export function FileCsvColumns(props: Props) {
                       })
                     : startEditingHeader(headerIndex, e.target.value)
                 }
-                value={
-                  editingHeader?.index === headerIndex
-                    ? editingHeader.value
-                    : header
-                }
+                value={editingHeader?.index === headerIndex ? editingHeader.value : header}
               />
               {editingHeader?.index === headerIndex && (
-                <Button
-                  className="h-8 w-8"
-                  onClick={confirmHeaderEdit}
-                  size="icon"
-                  variant="ghost"
-                >
+                <Button className="h-8 w-8" onClick={confirmHeaderEdit} size="icon" variant="ghost">
                   <Check className="h-4 w-4" />
                 </Button>
               )}
@@ -161,10 +140,7 @@ export function FileCsvColumns(props: Props) {
                 <ArrowDown className="h-3 w-3" />
               </Button>
               <Button
-                className={cn(
-                  "h-7 w-7",
-                  csvInstance.headers.length <= 1 && "opacity-50",
-                )}
+                className={cn("h-7 w-7", csvInstance.headers.length <= 1 && "opacity-50")}
                 disabled={csvInstance.headers.length <= 1}
                 onClick={() => removeColumn(headerIndex)}
                 size="icon"

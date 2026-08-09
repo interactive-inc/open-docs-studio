@@ -32,8 +32,7 @@ type Props = {
 export function MarkdownFileView(props: Props): ReactNode {
   const frontMatter = props.meta
 
-  const hasFrontMatter =
-    frontMatter !== null && Object.keys(frontMatter || {}).length > 0
+  const hasFrontMatter = frontMatter !== null && Object.keys(frontMatter || {}).length > 0
 
   const html = marked.parse(props.content)
 
@@ -42,12 +41,7 @@ export function MarkdownFileView(props: Props): ReactNode {
 
   return (
     <div className="h-full space-y-2">
-      {isArchived && (
-        <ArchiveRestoreBanner
-          filePath={props.filePath}
-          onRestore={props.onReload}
-        />
-      )}
+      {isArchived && <ArchiveRestoreBanner filePath={props.filePath} onRestore={props.onReload} />}
       <FileHeader
         filePath={props.filePath}
         fileData={props.fileData}
@@ -65,7 +59,7 @@ export function MarkdownFileView(props: Props): ReactNode {
       <Card className="overflow-hidden rounded-md p-0">
         <div
           className="markdown-body p-4"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: markdown content needs HTML rendering
+          // markdown content needs HTML rendering
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </Card>

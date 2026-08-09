@@ -24,10 +24,7 @@ export function SelectNumberEditableCell(props: Props) {
   }
 
   return (
-    <Select
-      value={props.value?.toString() || ""}
-      onValueChange={handleValueChange}
-    >
+    <Select value={props.value?.toString() || ""} onValueChange={handleValueChange}>
       <SelectTrigger className="w-full bg-background">
         <SelectValue placeholder="選択してください" />
       </SelectTrigger>

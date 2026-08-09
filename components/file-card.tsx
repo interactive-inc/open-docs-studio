@@ -13,16 +13,12 @@ type Props = {
 }
 
 export function FileCard(props: Props) {
-  const [deleteConfirmFiles, setDeleteConfirmFiles] = useState<Set<string>>(
-    new Set(),
-  )
+  const [deleteConfirmFiles, setDeleteConfirmFiles] = useState<Set<string>>(new Set())
 
   const deleteFileMutation = useMutation({
     async mutationFn(filePath: string) {
       const path = normalizePath(filePath)
-      const pathSegments = path
-        .split("/")
-        .map((segment) => encodeURIComponent(segment))
+      const pathSegments = path.split("/").map((segment) => encodeURIComponent(segment))
       const encodedPath = pathSegments.join("/")
       const resp = await fetch(`/api/files/${encodedPath}`, {
         method: "DELETE",
@@ -85,9 +81,7 @@ export function FileCard(props: Props) {
         {props.file.path.name}
       </Link>
       <div className="flex items-center gap-2">
-        <span className="text-sm uppercase opacity-50">
-          {props.file.extension}
-        </span>
+        <span className="text-sm uppercase opacity-50">{props.file.extension}</span>
         <div className="flex gap-1">
           <Button
             size="sm"
@@ -101,11 +95,7 @@ export function FileCard(props: Props) {
           </Button>
           <Button
             size="sm"
-            variant={
-              deleteConfirmFiles.has(props.file.path.path)
-                ? "destructive"
-                : "ghost"
-            }
+            variant={deleteConfirmFiles.has(props.file.path.path) ? "destructive" : "ghost"}
             onClick={() => handleDeleteClick(props.file.path.path)}
             disabled={deleteFileMutation.isPending}
             className="h-8 w-8 p-0"

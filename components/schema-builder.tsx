@@ -40,10 +40,7 @@ export function SchemaBuilder(props: Props) {
     return Object.entries(props.schema).map(([key, value]) => {
       const field = value as DocFileIndexSchemaField
 
-      const getNumericValue = (
-        obj: unknown,
-        prop: string,
-      ): number | undefined => {
+      const getNumericValue = (obj: unknown, prop: string): number | undefined => {
         if (obj && typeof obj === "object" && prop in obj) {
           const val = (obj as Record<string, unknown>)[prop]
           return typeof val === "number" ? val : undefined
@@ -51,36 +48,23 @@ export function SchemaBuilder(props: Props) {
         return undefined
       }
 
-      const getStringArrayValue = (
-        obj: unknown,
-        prop: string,
-      ): string[] | undefined => {
+      const getStringArrayValue = (obj: unknown, prop: string): string[] | undefined => {
         if (obj && typeof obj === "object" && prop in obj) {
           const val = (obj as Record<string, unknown>)[prop]
-          return Array.isArray(val) && val.every((v) => typeof v === "string")
-            ? val
-            : undefined
+          return Array.isArray(val) && val.every((v) => typeof v === "string") ? val : undefined
         }
         return undefined
       }
 
-      const getNumberArrayValue = (
-        obj: unknown,
-        prop: string,
-      ): number[] | undefined => {
+      const getNumberArrayValue = (obj: unknown, prop: string): number[] | undefined => {
         if (obj && typeof obj === "object" && prop in obj) {
           const val = (obj as Record<string, unknown>)[prop]
-          return Array.isArray(val) && val.every((v) => typeof v === "number")
-            ? val
-            : undefined
+          return Array.isArray(val) && val.every((v) => typeof v === "number") ? val : undefined
         }
         return undefined
       }
 
-      const getStringValue = (
-        obj: unknown,
-        prop: string,
-      ): string | undefined => {
+      const getStringValue = (obj: unknown, prop: string): string | undefined => {
         if (obj && typeof obj === "object" && prop in obj) {
           const val = (obj as Record<string, unknown>)[prop]
           return typeof val === "string" ? val : undefined
@@ -88,9 +72,7 @@ export function SchemaBuilder(props: Props) {
         return undefined
       }
 
-      const options =
-        getStringArrayValue(field, "options") ||
-        getNumberArrayValue(field, "options")
+      const options = getStringArrayValue(field, "options") || getNumberArrayValue(field, "options")
 
       const isValidFieldType = (type: string): type is FieldType => {
         const validTypes: FieldType[] = [
@@ -209,10 +191,7 @@ export function SchemaBuilder(props: Props) {
       <p>スキーマ</p>
       <div className="space-y-2">
         {fields.map((field, index) => (
-          <div
-            key={`${field.key}-${index}`}
-            className="space-y-2 rounded-md border p-3"
-          >
+          <div key={`${field.key}-${index}`} className="space-y-2 rounded-md border p-3">
             <div className="flex items-center gap-x-2">
               <Input
                 value={field.key}
@@ -222,9 +201,7 @@ export function SchemaBuilder(props: Props) {
               />
               <select
                 value={field.type}
-                onChange={(e) =>
-                  updateField(index, { type: e.target.value as FieldType })
-                }
+                onChange={(e) => updateField(index, { type: e.target.value as FieldType })}
                 className="rounded-md border px-3 py-2"
               >
                 {fieldTypeOptions.map((option) => (
@@ -237,17 +214,11 @@ export function SchemaBuilder(props: Props) {
                 <input
                   type="checkbox"
                   checked={field.required}
-                  onChange={(e) =>
-                    updateField(index, { required: e.target.checked })
-                  }
+                  onChange={(e) => updateField(index, { required: e.target.checked })}
                 />
                 必須
               </label>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => removeField(index)}
-              >
+              <Button variant="outline" size="sm" onClick={() => removeField(index)}>
                 削除
               </Button>
             </div>
@@ -255,9 +226,7 @@ export function SchemaBuilder(props: Props) {
             {field.type === "relation" || field.type === "multi-relation" ? (
               <Input
                 value={field.relationTo || ""}
-                onChange={(e) =>
-                  updateField(index, { relationTo: e.target.value })
-                }
+                onChange={(e) => updateField(index, { relationTo: e.target.value })}
                 placeholder="リレーション先 (例: docs/projects/**/*.md)"
                 className="text-sm"
               />

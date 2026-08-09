@@ -1,7 +1,4 @@
-import type {
-  DocFileIndexSchemaField,
-  DocRelation,
-} from "@interactive-inc/docs-client"
+import type { DocFileIndexSchemaField, DocRelation } from "@interactive-inc/docs-client"
 import { EditableTableCell } from "@/components/editable-table-cell/editable-table-cell"
 import { TableCell } from "@/components/ui/table"
 
@@ -51,10 +48,7 @@ export function DirectoryTableCell(props: Props) {
     )
   }
 
-  if (
-    schema.type === "multi-select-text" ||
-    schema.type === "multi-select-number"
-  ) {
+  if (schema.type === "multi-select-text" || schema.type === "multi-select-number") {
     return (
       <TableCell className="p-1">
         <EditableTableCell
@@ -69,11 +63,7 @@ export function DirectoryTableCell(props: Props) {
     )
   }
 
-  if (
-    schema.type === "text" ||
-    schema.type === "number" ||
-    schema.type === "boolean"
-  ) {
+  if (schema.type === "text" || schema.type === "number" || schema.type === "boolean") {
     return (
       <TableCell className="p-1">
         <EditableTableCell

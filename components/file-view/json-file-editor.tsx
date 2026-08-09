@@ -13,10 +13,8 @@ export function JsonFileEditor(props: Props) {
       const jsonData = JSON.parse(props.content)
       setFormattedJson(JSON.stringify(jsonData, null, 2))
       setError(null)
-    } catch (_e) {
-      setError(
-        "JSONのパースに失敗しました。有効なJSONではない可能性があります。",
-      )
+    } catch {
+      setError("JSONのパースに失敗しました。有効なJSONではない可能性があります。")
       setFormattedJson(props.content) // JSONのパースに失敗した場合はそのまま表示
     }
   }, [props.content])
@@ -29,9 +27,7 @@ export function JsonFileEditor(props: Props) {
         </div>
       )}
       <div className="overflow-x-auto rounded bg-gray-800 p-4 text-white">
-        <pre className="whitespace-pre-wrap font-mono text-green-300">
-          {formattedJson}
-        </pre>
+        <pre className="whitespace-pre-wrap font-mono text-green-300">{formattedJson}</pre>
       </div>
     </div>
   )

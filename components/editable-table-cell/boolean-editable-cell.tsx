@@ -14,13 +14,7 @@ type Props = {
 export function BooleanEditableCell(props: Props) {
   return (
     <Select
-      value={
-        props.value === true
-          ? "true"
-          : props.value === false
-            ? "false"
-            : "undefined"
-      }
+      value={props.value === true ? "true" : props.value === false ? "false" : "undefined"}
       onValueChange={(value) => {
         if (value === "true") {
           props.onUpdate(true)

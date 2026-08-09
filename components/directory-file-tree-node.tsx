@@ -39,9 +39,7 @@ export function DirectoryFileTreeNode(props: Props) {
           className={cn("h-7", { "bg-sidebar-accent": isSelected })}
           onClick={onClick}
         >
-          {props.node.icon && (
-            <span className="text-base">{props.node.icon}</span>
-          )}
+          {props.node.icon && <span className="text-base">{props.node.icon}</span>}
           <span>{props.node.title}</span>
         </SidebarMenuButton>
         {children.length !== 0 && (
@@ -66,13 +64,8 @@ export function DirectoryFileTreeNode(props: Props) {
 
   return (
     <SidebarMenuSubItem>
-      <SidebarMenuSubButton
-        className={cn({ "bg-sidebar-accent": isSelected })}
-        onClick={onClick}
-      >
-        {props.node.icon && (
-          <span className="text-base">{props.node.icon}</span>
-        )}
+      <SidebarMenuSubButton className={cn({ "bg-sidebar-accent": isSelected })} onClick={onClick}>
+        {props.node.icon && <span className="text-base">{props.node.icon}</span>}
         <span>{props.node.title}</span>
       </SidebarMenuSubButton>
       {children.length !== 0 && (

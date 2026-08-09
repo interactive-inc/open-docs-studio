@@ -12,11 +12,7 @@ export function DirectoryFileListView(props: Props) {
     <Card className="rounded-md p-2">
       <div className="space-y-2">
         {props.files.map((file) => (
-          <FileCard
-            key={file.path.path}
-            file={file}
-            onDataChanged={props.onDataChanged}
-          />
+          <FileCard key={file.path.path} file={file} onDataChanged={props.onDataChanged} />
         ))}
       </div>
     </Card>

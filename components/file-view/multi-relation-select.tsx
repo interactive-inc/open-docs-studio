@@ -24,9 +24,7 @@ export function MultiRelationSelect(props: Props) {
   const selectedValues = Array.isArray(props.value) ? props.value : []
 
   // 選択済みの値を除外した利用可能なオプション
-  const availableOptions = options.filter(
-    (option) => !selectedValues.includes(option.name),
-  )
+  const availableOptions = options.filter((option) => !selectedValues.includes(option.name))
 
   const addValue = (newValue: string) => {
     if (newValue && !selectedValues.includes(newValue)) {
@@ -79,9 +77,7 @@ export function MultiRelationSelect(props: Props) {
         </div>
         {/* オプションが定義されていない場合のメッセージ */}
         {options.length === 0 && (
-          <div className="text-muted-foreground text-sm">
-            リレーションが設定されていません
-          </div>
+          <div className="text-muted-foreground text-sm">リレーションが設定されていません</div>
         )}
       </div>
     )
@@ -110,11 +106,7 @@ export function MultiRelationSelect(props: Props) {
         const option = options.find((opt) => opt.name === value)
         const label = option?.label || value
         return (
-          <Button
-            key={value}
-            variant={"outline"}
-            onClick={() => removeValue(value)}
-          >
+          <Button key={value} variant={"outline"} onClick={() => removeValue(value)}>
             <span>{label}</span>
             <X className="w-4 text-muted-foreground" />
           </Button>
@@ -122,9 +114,7 @@ export function MultiRelationSelect(props: Props) {
       })}
       {/* オプションが定義されていない場合のメッセージ */}
       {options.length === 0 && (
-        <div className="text-muted-foreground text-sm">
-          リレーションが設定されていません
-        </div>
+        <div className="text-muted-foreground text-sm">リレーションが設定されていません</div>
       )}
     </div>
   )

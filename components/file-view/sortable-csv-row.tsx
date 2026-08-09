@@ -26,20 +26,12 @@ export function SortableCsvRow(props: Props) {
     touchAction: "none",
   }
 
-  function handleCellChange(
-    rowIndex: number,
-    columnIndex: number,
-    value: string,
-  ) {
+  function handleCellChange(rowIndex: number, columnIndex: number, value: string) {
     props.onCellUpdate(rowIndex, columnIndex, value)
   }
 
   return (
-    <TableRow
-      ref={sortable.setNodeRef}
-      style={style}
-      className="hover:opacity-60"
-    >
+    <TableRow ref={sortable.setNodeRef} style={style} className="hover:opacity-60">
       <TableCell {...sortable.attributes} {...sortable.listeners}>
         <GripVertical className="size-4" />
       </TableCell>

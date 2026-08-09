@@ -31,10 +31,7 @@ export function CsvFileView(props: Props) {
         onReload={props.onReload}
         isLoading={props.isLoading}
       >
-        <Button
-          onClick={toggleColumnEditMode}
-          variant={isColumnEditMode ? "default" : "secondary"}
-        >
+        <Button onClick={toggleColumnEditMode} variant={isColumnEditMode ? "default" : "secondary"}>
           {"カラム"}
         </Button>
       </FileHeader>

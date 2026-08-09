@@ -1,21 +1,11 @@
-import type {
-  DocFileIndexSchema,
-  DocFileMdAny,
-  DocRelation,
-} from "@interactive-inc/docs-client"
+import type { DocFileIndexSchema, DocFileMdAny, DocRelation } from "@interactive-inc/docs-client"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Plus } from "lucide-react"
 import { useState } from "react"
 import { DirectoryTableRow } from "@/components/directory-table/directory-table-row"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { apiClient } from "@/lib/api-client"
 import { normalizePath } from "@/utils/normalize-path"
 

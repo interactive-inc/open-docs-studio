@@ -29,12 +29,7 @@ export function EditableTableCell(props: Props) {
 
   // 数値型の場合
   if (props.type === "number") {
-    return (
-      <NumberEditableCell
-        value={props.value as number}
-        onUpdate={props.onUpdate}
-      />
-    )
+    return <NumberEditableCell value={props.value as number} onUpdate={props.onUpdate} />
   }
 
   // 単一リレーション型の場合
@@ -61,23 +56,17 @@ export function EditableTableCell(props: Props) {
 
   // 複数テキスト型の場合
   if (props.type === "multi-text") {
-    return (
-      <MultiTextEditableCell value={props.value} onUpdate={props.onUpdate} />
-    )
+    return <MultiTextEditableCell value={props.value} onUpdate={props.onUpdate} />
   }
 
   // 複数数値型の場合
   if (props.type === "multi-number") {
-    return (
-      <MultiNumberEditableCell value={props.value} onUpdate={props.onUpdate} />
-    )
+    return <MultiNumberEditableCell value={props.value} onUpdate={props.onUpdate} />
   }
 
   // 複数Boolean型の場合
   if (props.type === "multi-boolean") {
-    return (
-      <MultiBooleanEditableCell value={props.value} onUpdate={props.onUpdate} />
-    )
+    return <MultiBooleanEditableCell value={props.value} onUpdate={props.onUpdate} />
   }
 
   // 選択テキスト型の場合

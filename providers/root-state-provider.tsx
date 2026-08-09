@@ -20,9 +20,5 @@ export function RootStateProvider(props: Props) {
     },
   })
 
-  return (
-    <RootStateContext.Provider value={query}>
-      {props.children}
-    </RootStateContext.Provider>
-  )
+  return <RootStateContext.Provider value={query}>{props.children}</RootStateContext.Provider>
 }

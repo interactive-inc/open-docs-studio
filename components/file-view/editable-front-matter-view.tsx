@@ -48,13 +48,8 @@ export function EditableFrontMatterView(props: Props) {
         .map((v) => v.trim())
         .filter((v) => v !== "")
       if (originalValue.length > 0 && typeof originalValue[0] === "number") {
-        convertedValue = items
-          .map((v) => Number(v))
-          .filter((v) => !Number.isNaN(v))
-      } else if (
-        originalValue.length > 0 &&
-        typeof originalValue[0] === "boolean"
-      ) {
+        convertedValue = items.map((v) => Number(v)).filter((v) => !Number.isNaN(v))
+      } else if (originalValue.length > 0 && typeof originalValue[0] === "boolean") {
         convertedValue = items.map((v) => v === "true")
       } else {
         convertedValue = items
@@ -77,10 +72,7 @@ export function EditableFrontMatterView(props: Props) {
         {Object.entries(frontMatter).map(([key, value]) => {
           const schemaField = props.schema?.[key]
           const relationData = props.relations?.find((rel) => {
-            return (
-              rel.path ===
-              (schemaField && "path" in schemaField ? schemaField.path : null)
-            )
+            return rel.path === (schemaField && "path" in schemaField ? schemaField.path : null)
           })
 
           // multi-系のフィールドは2カラムスペースを使用

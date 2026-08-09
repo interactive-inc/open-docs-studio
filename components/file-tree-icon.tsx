@@ -1,9 +1,4 @@
-import {
-  FileIcon,
-  FileJsonIcon,
-  FileSpreadsheetIcon,
-  FileTextIcon,
-} from "lucide-react"
+import { FileIcon, FileJsonIcon, FileSpreadsheetIcon, FileTextIcon } from "lucide-react"
 
 type Props = {
   fileName: string

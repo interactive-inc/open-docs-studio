@@ -21,10 +21,7 @@ export const GET = factory.createHandlers(
       throw new HTTPException(400, { message: "パスが無効です。" })
     }
 
-    const indexFile = await c.var.client
-      .directory(currentPath)
-      .indexFile()
-      .read()
+    const indexFile = await c.var.client.directory(currentPath).indexFile().read()
 
     if (indexFile instanceof Error) {
       throw new HTTPException(404, { message: indexFile.message })

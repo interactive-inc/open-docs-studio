@@ -48,8 +48,7 @@ export function FilePageView(props: Props) {
 
   const fileData = fileQuery.data
 
-  const directorySchemaValue =
-    directoryQuery.data?.indexFile?.content?.meta?.schema
+  const directorySchemaValue = directoryQuery.data?.indexFile?.content?.meta?.schema
 
   const directorySchema = directorySchemaValue || {}
 
@@ -57,9 +56,7 @@ export function FilePageView(props: Props) {
 
   // contentがオブジェクトの場合はbodyプロパティを使用
   const initialContent =
-    typeof fileData?.content === "string"
-      ? fileData.content
-      : fileData?.content?.body || ""
+    typeof fileData?.content === "string" ? fileData.content : fileData?.content?.body || ""
 
   const [currentContent, setCurrentContent] = useState(initialContent)
 
@@ -130,8 +127,7 @@ export function FilePageView(props: Props) {
   }
 
   // pathオブジェクトから実際のパス文字列を取得
-  const filePath =
-    typeof fileData.path === "string" ? fileData.path : fileData.path?.path
+  const filePath = typeof fileData.path === "string" ? fileData.path : fileData.path?.path
 
   if (fileData.type === "markdown") {
     return (

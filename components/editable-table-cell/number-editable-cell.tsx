@@ -7,8 +7,7 @@ type Props = {
 }
 
 export function NumberEditableCell(props: Props) {
-  const displayValue =
-    props.value !== undefined && props.value !== null ? String(props.value) : ""
+  const displayValue = props.value !== undefined && props.value !== null ? String(props.value) : ""
   const [editValue, setEditValue] = useState(displayValue)
 
   useEffect(() => {
@@ -17,8 +16,7 @@ export function NumberEditableCell(props: Props) {
 
   const handleBlur = () => {
     const num = Number(editValue)
-    const parsedValue =
-      editValue === "" ? undefined : Number.isNaN(num) ? undefined : num
+    const parsedValue = editValue === "" ? undefined : Number.isNaN(num) ? undefined : num
     if (parsedValue !== props.value) {
       props.onUpdate(parsedValue ?? null)
     }

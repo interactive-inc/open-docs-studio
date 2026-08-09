@@ -1,8 +1,4 @@
-import type {
-  DocFileIndexSchema,
-  DocFileMdAny,
-  DocRelation,
-} from "@interactive-inc/docs-client"
+import type { DocFileIndexSchema, DocFileMdAny, DocRelation } from "@interactive-inc/docs-client"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Archive, ArchiveRestore, Trash2 } from "lucide-react"
 import Link from "next/link"
@@ -178,10 +174,7 @@ export function DirectoryTableRow(props: Props) {
   })
 
   return (
-    <TableRow
-      key={props.file.path.path}
-      className={props.isArchived ? "opacity-60" : ""}
-    >
+    <TableRow key={props.file.path.path} className={props.isArchived ? "opacity-60" : ""}>
       <TableCell className="font-medium">
         <Link
           href={`/${normalizePath(props.file.path.path)}`}
@@ -239,11 +232,7 @@ export function DirectoryTableRow(props: Props) {
           )}
           <Button
             size="sm"
-            variant={
-              props.deleteConfirmFiles.has(props.file.path.path)
-                ? "destructive"
-                : "ghost"
-            }
+            variant={props.deleteConfirmFiles.has(props.file.path.path) ? "destructive" : "ghost"}
             onClick={() => handleDelete(props.file.path.path)}
             disabled={deleteFileMutation.isPending}
             className="h-8 w-8 p-0"

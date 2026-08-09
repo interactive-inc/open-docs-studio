@@ -1,7 +1,4 @@
-import type {
-  DocFileIndexSchemaField,
-  DocRelationFile,
-} from "@interactive-inc/docs-client"
+import type { DocFileIndexSchemaField, DocRelationFile } from "@interactive-inc/docs-client"
 import { useEffect, useState } from "react"
 import { MultiRelationSelect } from "@/components/file-view/multi-relation-select"
 import { SingleRelationSelect } from "@/components/file-view/single-relation-select"
@@ -44,11 +41,7 @@ export function FrontMatterInputField(props: Props) {
   }, [props.value])
 
   // リレーション型の場合
-  if (
-    props.schemaField &&
-    props.schemaField.type === "relation" &&
-    props.schemaField.path
-  ) {
+  if (props.schemaField && props.schemaField.type === "relation" && props.schemaField.path) {
     return (
       <SingleRelationSelect
         value={(props.value as string) || ""}
@@ -59,17 +52,11 @@ export function FrontMatterInputField(props: Props) {
   }
 
   // 配列リレーション型の場合
-  if (
-    props.schemaField &&
-    props.schemaField.type === "multi-relation" &&
-    props.schemaField.path
-  ) {
+  if (props.schemaField && props.schemaField.type === "multi-relation" && props.schemaField.path) {
     // 値を配列に正規化
     let normalizedValue: string[] = []
     if (Array.isArray(props.value)) {
-      normalizedValue = props.value.filter(
-        (v) => typeof v === "string" && v.trim() !== "",
-      )
+      normalizedValue = props.value.filter((v) => typeof v === "string" && v.trim() !== "")
     } else if (typeof props.value === "string" && props.value.trim() !== "") {
       normalizedValue = props.value
         .split(",")
@@ -81,9 +68,7 @@ export function FrontMatterInputField(props: Props) {
       <MultiRelationSelect
         value={normalizedValue}
         relationOptions={props.relationOptions}
-        onValueChange={(value) =>
-          props.onValueChange(props.fieldKey, value.join(", "))
-        }
+        onValueChange={(value) => props.onValueChange(props.fieldKey, value.join(", "))}
         wrap={true}
       />
     )
@@ -121,11 +106,9 @@ export function FrontMatterInputField(props: Props) {
 
   if (Array.isArray(props.originalValue)) {
     const placeholder =
-      props.originalValue.length > 0 &&
-      typeof props.originalValue[0] === "number"
+      props.originalValue.length > 0 && typeof props.originalValue[0] === "number"
         ? "カンマ区切りで数値を入力 (例: 1, 2, 3)"
-        : props.originalValue.length > 0 &&
-            typeof props.originalValue[0] === "boolean"
+        : props.originalValue.length > 0 && typeof props.originalValue[0] === "boolean"
           ? "カンマ区切りでtrue/falseを入力 (例: true, false, true)"
           : "カンマ区切りで入力 (例: item1, item2, item3)"
 

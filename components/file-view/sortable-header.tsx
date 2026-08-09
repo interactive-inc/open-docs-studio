@@ -7,8 +7,7 @@ type Props = {
 }
 
 export function CsvSortableHeader({ id, children }: Props) {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id })
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id })
 
   const style = {
     transform: CSS.Transform.toString(transform),

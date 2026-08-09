@@ -32,9 +32,7 @@ export function DirectoryPageView(props: Props) {
 
   const directoryPath = getDirectoryPath(props.currentPath, false)
 
-  const path = directoryPath.startsWith("/")
-    ? directoryPath.substring(1)
-    : directoryPath
+  const path = directoryPath.startsWith("/") ? directoryPath.substring(1) : directoryPath
 
   const query = useSuspenseQuery({
     queryKey: [endpoint.$url({ param: { path } })],
@@ -206,16 +204,13 @@ export function DirectoryPageView(props: Props) {
           />
         )}
         {otherFiles.length !== 0 && (
-          <DirectoryFileListView
-            files={otherFiles}
-            onDataChanged={() => query.refetch()}
-          />
+          <DirectoryFileListView files={otherFiles} onDataChanged={() => query.refetch()} />
         )}
         {query.data.indexFile.content.body && (
           <Card className="overflow-hidden rounded-md p-0">
             <div
               className="markdown-body p-4"
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: markdown content needs HTML rendering
+              // markdown content needs HTML rendering
               dangerouslySetInnerHTML={{ __html: bodyHtml }}
             />
           </Card>

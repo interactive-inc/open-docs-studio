@@ -62,10 +62,7 @@ if (args.values.version) {
 
 const docsDir = args.positionals[0] || "docs"
 
-const port =
-  typeof args.values.port === "string"
-    ? Number.parseInt(args.values.port, 10)
-    : 4242
+const port = typeof args.values.port === "string" ? Number.parseInt(args.values.port, 10) : 4242
 
 const hostname = process.env.HOSTNAME || "localhost"
 
